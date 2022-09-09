@@ -1,16 +1,12 @@
 import { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import GoalItem from './components/GoalItem';
+import GoalInput from './components/GoalInput';
 
 export default function App() {
-  const [enteredGoalText, setEnteredGoalText] = useState('');
   const [goals, setGoals] = useState([]);
 
-  const goalInputHandler = text => {
-    setEnteredGoalText(text);
-  };
-
-  const addGoalHandler = () => {
+  const addGoalHandler = enteredGoalText => {
     setGoals([
       ...goals,
       { text: enteredGoalText, id: Math.random().toString() }, // use keyExtractor to tell FlatList how to use id as key
@@ -19,14 +15,7 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Your course goal"
-          onChangeText={goalInputHandler}
-        ></TextInput>
-        <Button title="Add Goal" onPress={addGoalHandler} />
-      </View>
+      <GoalInput onAddGoal={addGoalHandler} />
       {/* Max mentions in tutorial that we should use "wrapper View" for ScrollView and put ScrollView inside of it
           For me, it seems to work that way though (using slightly different styles) */}
       <FlatList // use this instead of ScrollView to optimize performance; only visible (or soon-to-be-visible) elements are rendered
@@ -52,13 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    flex: 2,
-    marginRight: 8,
-    padding: 8,
   },
   goalsContainer: {
     flex: 1,
