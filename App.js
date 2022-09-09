@@ -13,8 +13,8 @@ export default function App() {
     ]);
   };
 
-  const deleteGoalHandler = index => {
-    setGoals(goals.filter((_, i) => i !== index));
+  const deleteGoalHandler = id => {
+    setGoals(currGoals => currGoals.filter(g => g.id !== id));
   };
 
   return (
@@ -28,7 +28,7 @@ export default function App() {
         renderItem={itemData => (
           <GoalItem
             text={itemData.item.text}
-            index={itemData.index}
+            id={itemData.item.id}
             onDelete={deleteGoalHandler}
           />
         )}
