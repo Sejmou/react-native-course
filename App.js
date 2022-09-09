@@ -13,6 +13,10 @@ export default function App() {
     ]);
   };
 
+  const deleteGoalHandler = index => {
+    setGoals(goals.filter((_, i) => i !== index));
+  };
+
   return (
     <View style={styles.appContainer}>
       <GoalInput onAddGoal={addGoalHandler} />
@@ -21,7 +25,13 @@ export default function App() {
       <FlatList // use this instead of ScrollView to optimize performance; only visible (or soon-to-be-visible) elements are rendered
         style={styles.goalsContainer}
         data={goals}
-        renderItem={itemData => <GoalItem text={itemData.item.text} />}
+        renderItem={itemData => (
+          <GoalItem
+            text={itemData.item.text}
+            index={itemData.index}
+            onDelete={deleteGoalHandler}
+          />
+        )}
         keyExtractor={item => item.id} // tells FlatList what value to use as key
         alwaysBounceVertical={false} // disables "bouncing" effect while scrolling if FlatList height hasn't exceeded its container's height yet
       />
