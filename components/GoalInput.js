@@ -9,6 +9,7 @@ const GoalInput = ({ onAddGoal }) => {
   };
   const buttonPressHandler = () => {
     onAddGoal(enteredGoalText);
+    setEnteredGoalText('');
   };
 
   return (
@@ -16,6 +17,7 @@ const GoalInput = ({ onAddGoal }) => {
       <CustomTextInput
         onChangeText={textInputHandler}
         placeholder="Your course goal"
+        value={enteredGoalText}
       />
       <Button title="Add Goal" onPress={buttonPressHandler} />
     </View>

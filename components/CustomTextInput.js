@@ -1,13 +1,7 @@
 import { TextInput, StyleSheet } from 'react-native';
 
-const CustomTextInput = ({ onChangeText, placeholder }) => {
-  return (
-    <TextInput
-      style={styles.textInput}
-      placeholder={placeholder}
-      onChangeText={onChangeText}
-    ></TextInput>
-  );
+const CustomTextInput = inputProps => {
+  return <TextInput style={styles.textInput} {...inputProps}></TextInput>;
 };
 export default CustomTextInput;
 
