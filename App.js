@@ -5,7 +5,7 @@ import {
   TextInput,
   Button,
   Text,
-  ScrollView,
+  FlatList,
 } from 'react-native';
 
 export default function App() {
@@ -17,7 +17,11 @@ export default function App() {
   };
 
   const addGoalHandler = () => {
-    setGoals([...goals, enteredGoalText]);
+    setGoals([
+      ...goals,
+      // as we use FlatList, we need to provide a key prop here
+      { text: enteredGoalText, key: Math.random().toString() },
+    ]);
   };
 
   return (
@@ -32,16 +36,16 @@ export default function App() {
       </View>
       {/* Max mentions in tutorial that we should use "wrapper View" for ScrollView and put ScrollView inside of it
           For me, it seems to work that way though (using slightly different styles) */}
-      <ScrollView
+      <FlatList // use this instead of ScrollView to optimize performance; only visible (or soon-to-be-visible) elements are rendered
         style={styles.goalsContainer}
-        alwaysBounceVertical={false} // disables "bouncing" effect while scrolling if ScrollView height hasn't exceeded its container's height yet
-      >
-        {goals.map((goal, i) => (
-          <View key={i} style={styles.goalWrapper}>
-            <Text style={styles.goalText}>{goal}</Text>
+        data={goals}
+        renderItem={itemData => (
+          <View style={styles.goalWrapper}>
+            <Text style={styles.goalText}>{itemData.item.text}</Text>
           </View>
-        ))}
-      </ScrollView>
+        )}
+        alwaysBounceVertical={false} // disables "bouncing" effect while scrolling if FlatList height hasn't exceeded its container's height yet
+      />
     </View>
   );
 }
