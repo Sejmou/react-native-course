@@ -1,5 +1,12 @@
 import { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Button,
+  Text,
+  ScrollView,
+} from 'react-native';
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState('');
@@ -23,13 +30,18 @@ export default function App() {
         ></TextInput>
         <Button title="Add Goal" onPress={addGoalHandler} />
       </View>
-      <View style={styles.goalsContainer}>
+      {/* Max mentions in tutorial that we should use "wrapper View" for ScrollView and put ScrollView inside of it
+          For me, it seems to work that way though (using slightly different styles) */}
+      <ScrollView
+        style={styles.goalsContainer}
+        alwaysBounceVertical={false} // disables "bouncing" effect while scrolling if ScrollView height hasn't exceeded its container's height yet
+      >
         {goals.map((goal, i) => (
           <View key={i} style={styles.goalWrapper}>
             <Text style={styles.goalText}>{goal}</Text>
           </View>
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 }
