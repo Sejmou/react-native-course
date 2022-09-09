@@ -19,8 +19,7 @@ export default function App() {
   const addGoalHandler = () => {
     setGoals([
       ...goals,
-      // as we use FlatList, we need to provide a key prop here
-      { text: enteredGoalText, key: Math.random().toString() },
+      { text: enteredGoalText, id: Math.random().toString() }, // use keyExtractor to tell FlatList how to use id as key
     ]);
   };
 
@@ -44,6 +43,7 @@ export default function App() {
             <Text style={styles.goalText}>{itemData.item.text}</Text>
           </View>
         )}
+        keyExtractor={item => item.id} // tells FlatList what value to use as key
         alwaysBounceVertical={false} // disables "bouncing" effect while scrolling if FlatList height hasn't exceeded its container's height yet
       />
     </View>
