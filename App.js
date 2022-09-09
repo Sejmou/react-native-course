@@ -25,7 +25,9 @@ export default function App() {
       </View>
       <View style={styles.goalsContainer}>
         {goals.map((goal, i) => (
-          <Text key={i}>{goal}</Text>
+          <View key={i} style={styles.goalWrapper}>
+            <Text style={styles.goalText}>{goal}</Text>
+          </View>
         ))}
       </View>
     </View>
@@ -54,5 +56,17 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 1,
+  },
+  goalText: {
+    //borderRadius: 8, // this does NOT work on iOS, need to apply to wrapping View
+    // marginVertical: 8,
+    // backgroundColor: '#5e0acc',
+    padding: 8,
+    color: 'white', // can't set this on wrapper, as styles do NOT cascade (i.e. they don't apply to all children of a given element)
+  },
+  goalWrapper: {
+    borderRadius: 8,
+    marginVertical: 8,
+    backgroundColor: '#5e0acc',
   },
 });
