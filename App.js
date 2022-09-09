@@ -5,7 +5,16 @@ export default function App() {
     <View style={styles.container}>
       <Text>Hello World!</Text>
       <View>
-        <Text>Another piece of text</Text>
+        <Text
+          style={{
+            margin: 16,
+            borderWidth: 1,
+            borderColor: 'red',
+            padding: 16,
+          }}
+        >
+          This Text element is styled with inline styles
+        </Text>
       </View>
       <Button title="Tap here!" />
     </View>
