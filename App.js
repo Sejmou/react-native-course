@@ -5,15 +5,8 @@ export default function App() {
     <View style={styles.container}>
       <Text>Hello World!</Text>
       <View>
-        <Text
-          style={{
-            margin: 16,
-            borderWidth: 1,
-            borderColor: 'red',
-            padding: 16,
-          }}
-        >
-          This Text element is styled with inline styles
+        <Text style={styles.text}>
+          This Text element is styled with styles from a Stylesheet object
         </Text>
       </View>
       <Button title="Tap here!" />
@@ -27,5 +20,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    margin: 16,
+    borderWidth: 1,
+    borderColor: 'red',
+    padding: 16,
   },
 });
