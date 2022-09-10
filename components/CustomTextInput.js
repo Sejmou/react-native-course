@@ -7,10 +7,9 @@ export default CustomTextInput;
 
 const styles = StyleSheet.create({
   textInput: {
+    width: '100%',
     borderWidth: 1,
     borderColor: '#cccccc',
-    flex: 2,
-    marginRight: 8,
     padding: 8,
   },
 });
