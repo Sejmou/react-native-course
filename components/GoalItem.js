@@ -6,6 +6,7 @@ const GoalItem = ({ text, id, onDelete }) => {
       <Pressable
         onPress={() => onDelete(id)}
         android_ripple={{ color: '#210644', borderless: true }} // need to set borderLess: true as otherwise ripple "ignores borderRadius"
+        style={({ pressed }) => pressed && styles.pressed}
       >
         <Text style={styles.goalText}>{text}</Text>
       </Pressable>
@@ -23,5 +24,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginVertical: 8,
     backgroundColor: '#5e0acc',
+  },
+  pressed: {
+    opacity: 0.5,
   },
 });
