@@ -2,11 +2,14 @@ import { StyleSheet, View, Text, Pressable } from 'react-native';
 
 const GoalItem = ({ text, id, onDelete }) => {
   return (
-    <Pressable onPress={() => onDelete(id)}>
-      <View style={styles.goalWrapper}>
+    <View style={styles.goalWrapper}>
+      <Pressable
+        onPress={() => onDelete(id)}
+        android_ripple={{ color: '#210644', borderless: true }} // need to set borderLess: true as otherwise ripple "ignores borderRadius"
+      >
         <Text style={styles.goalText}>{text}</Text>
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   );
 };
 export default GoalItem;
