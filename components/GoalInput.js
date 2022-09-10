@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, Button, Modal } from 'react-native';
+import { StyleSheet, View, Button, Modal, Image } from 'react-native';
 import CustomTextInput from './CustomTextInput';
 
 const GoalInput = ({ visible, onAddGoal, onCancel }) => {
@@ -19,6 +19,10 @@ const GoalInput = ({ visible, onAddGoal, onCancel }) => {
       visible={visible}
     >
       <View style={styles.inputContainer}>
+        <Image
+          style={styles.image}
+          source={require('../assets/images/goal.png')}
+        />
         <CustomTextInput
           onChangeText={textInputHandler}
           placeholder="Your course goal"
@@ -48,6 +52,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginBottom: 16,
   },
   actions: {
     marginTop: 16,
