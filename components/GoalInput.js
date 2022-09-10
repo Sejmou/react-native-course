@@ -14,6 +14,7 @@ const GoalInput = ({ visible, onAddGoal, onCancel }) => {
 
   return (
     <Modal
+      animationType="slide"
       statusBarTranslucent // without that Modal was not covering whole screen on Android for some reason (offset from top)
       visible={visible}
     >
@@ -25,12 +26,13 @@ const GoalInput = ({ visible, onAddGoal, onCancel }) => {
         />
         <View style={styles.actions}>
           <Button
+            color="#b180f0"
             title="Add"
             disabled={!enteredGoalText}
             onPress={addHandler}
           />
           <View style={styles.rightButton}>
-            <Button title="Cancel" onPress={onCancel} />
+            <Button color="#f31282" title="Cancel" onPress={onCancel} />
           </View>
         </View>
       </View>
@@ -42,6 +44,7 @@ export default GoalInput;
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
+    backgroundColor: '#5e0acc',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,

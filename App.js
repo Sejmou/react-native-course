@@ -46,7 +46,11 @@ export default function App() {
       ) : (
         <Text style={styles.placeholderText}>No goals yet.</Text>
       )}
-      <Button title="Add goal" onPress={() => setShowModal(true)} />
+      <Button
+        title="Add goal"
+        color="#5e0acc"
+        onPress={() => setShowModal(true)}
+      />
     </View>
   );
 }
