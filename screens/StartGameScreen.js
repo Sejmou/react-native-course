@@ -3,7 +3,7 @@ import PrimaryButton from '../components/PrimaryButton';
 
 const StartGameScreen = () => {
   return (
-    <View style={styles.inputContainer}>
+    <View style={styles.container}>
       <TextInput
         style={styles.numberInput}
         maxLength={2}
@@ -12,15 +12,21 @@ const StartGameScreen = () => {
         cursorColor="#ddb52f" // ... use this for styling cursor on Android - text selection will remain in default OS color unfortunately
         autoCorrect={false}
       />
-      <PrimaryButton>Reset</PrimaryButton>
-      <PrimaryButton>Confirm</PrimaryButton>
+      <View style={styles.buttonsContainer}>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton>Reset</PrimaryButton>
+        </View>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton>Confirm</PrimaryButton>
+        </View>
+      </View>
     </View>
   );
 };
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-  inputContainer: {
+  container: {
     marginTop: 96,
     marginHorizontal: 24,
     borderRadius: 8,
@@ -33,6 +39,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     shadowOpacity: 0.25,
+    alignItems: 'center',
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+  },
+  buttonContainer: {
+    flex: 1,
   },
   numberInput: {
     height: 48,
