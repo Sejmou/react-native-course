@@ -1,11 +1,7 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
 // TODO: make this behave like an actual button
-const PrimaryButton = ({ children }) => {
-  const pressHandler = () => {
-    console.log('press');
-  };
-
+const PrimaryButton = ({ children, onPress }) => {
   return (
     <View style={styles.outerContainer}>
       <Pressable
@@ -14,7 +10,7 @@ const PrimaryButton = ({ children }) => {
             ? [styles.innerContainer, styles.pressed] // this is required to give visual button press feedback on iOS
             : styles.innerContainer
         }
-        onPress={pressHandler}
+        onPress={onPress}
         android_ripple={{ color: '#640233' }}
       >
         <Text style={styles.text}>{children}</Text>

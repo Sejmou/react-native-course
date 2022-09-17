@@ -1,7 +1,30 @@
-import { TextInput, View, StyleSheet, Platform } from 'react-native';
+import { useState } from 'react';
+import { TextInput, View, StyleSheet, Platform, Alert } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 
 const StartGameScreen = () => {
+  const [enteredNumber, setEnteredNumber] = useState('');
+
+  const numberInputHandler = enteredText => {
+    setEnteredNumber(enteredText);
+  };
+
+  const confirmInputHandler = () => {
+    const chosenNumber = parseInt(enteredNumber);
+
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+      // show alert
+      Alert.alert('Invalid input', 'Please enter a number between 1 and 99.', [
+        { onPress: resetInputHandler },
+      ]);
+      return;
+    }
+  };
+
+  const resetInputHandler = () => {
+    setEnteredNumber('');
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -11,13 +34,15 @@ const StartGameScreen = () => {
         selectionColor={Platform.OS === 'ios' ? '#ddb52f' : null} // yellow selection looks really bad on Android, so...
         cursorColor="#ddb52f" // ... use this for styling cursor on Android - text selection will remain in default OS color unfortunately
         autoCorrect={false}
+        value={enteredNumber}
+        onChangeText={numberInputHandler}
       />
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
-          <PrimaryButton>Reset</PrimaryButton>
+          <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
         </View>
         <View style={styles.buttonContainer}>
-          <PrimaryButton>Confirm</PrimaryButton>
+          <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
         </View>
       </View>
     </View>
