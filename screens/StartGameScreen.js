@@ -54,7 +54,6 @@ export default StartGameScreen;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 96,
     marginHorizontal: 24,
     borderRadius: 8,
     padding: 16,

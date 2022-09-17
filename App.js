@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { StyleSheet, ImageBackground } from 'react-native';
+import {
+  StyleSheet,
+  ImageBackground,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import StartGameScreen from './screens/StartGameScreen';
@@ -26,7 +32,11 @@ export default function App() {
         style={styles.rootScreen} // applied to View wrapping Image in internal implementation of ImageBackground
         imageStyle={styles.backgroundImage}
       >
-        {screen}
+        {/* Content wrapped by SafeAreaView will not be covered by Notch/Status Bar on iOS
+            Workaround is required for Android, see below */}
+        <SafeAreaView style={[styles.rootScreen, styles.androidSafeArea]}>
+          {screen}
+        </SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );
@@ -35,6 +45,10 @@ export default function App() {
 const styles = StyleSheet.create({
   rootScreen: {
     flex: 1,
+  },
+  androidSafeArea: {
+    // workaround for SafeAreaView on Android (https://stackoverflow.com/questions/51289587/how-to-use-safeareaview-for-android-notch-devices)
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   backgroundImage: {
     opacity: 0.15,
