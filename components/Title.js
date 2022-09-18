@@ -1,6 +1,8 @@
 import { Text, StyleSheet } from 'react-native';
 import Container from './Container';
 
+import Colors from '../util/colors';
+
 const Title = ({ text }) => {
   return (
     <Container>
@@ -15,6 +17,6 @@ const styles = StyleSheet.create({
     fontSize: 48,
     textAlign: 'center',
     fontWeight: 'bold',
-    color: '#ddb52f',
+    color: Colors.accent500,
   },
 });

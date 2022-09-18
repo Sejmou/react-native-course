@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { TextInput, View, StyleSheet, Platform, Alert } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 
+import Colors from '../util/colors';
+
 const StartGameScreen = ({ onPickNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState('');
 
@@ -33,8 +35,8 @@ const StartGameScreen = ({ onPickNumber }) => {
         style={styles.numberInput}
         maxLength={2}
         keyboardType="number-pad"
-        selectionColor={Platform.OS === 'ios' ? '#ddb52f' : null} // yellow selection looks really bad on Android, so...
-        cursorColor="#ddb52f" // ... use this for styling cursor on Android - text selection will remain in default OS color unfortunately
+        selectionColor={Platform.OS === 'ios' ? Colors.accent500 : null} // yellow selection looks really bad on Android, so...
+        cursorColor={Colors.accent500} // ... use this for styling cursor on Android - text selection will remain in default OS color unfortunately
         autoCorrect={false}
         value={enteredNumber}
         onChangeText={numberInputHandler}
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     borderRadius: 8,
     padding: 16,
-    backgroundColor: '#3b021f',
+    backgroundColor: Colors.primary800,
     // for shadow on Android
     elevation: 4,
     // for shadow on iOS
@@ -80,8 +82,8 @@ const styles = StyleSheet.create({
     fontSize: 32,
     textAlign: 'center',
     fontWeight: 'bold',
-    color: '#ddb52f',
-    borderBottomColor: '#ddb52f',
+    color: Colors.accent500,
+    borderBottomColor: Colors.accent500,
     borderBottomWidth: 2,
     marginVertical: 8,
   },

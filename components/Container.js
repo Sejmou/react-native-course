@@ -1,5 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 
+import Colors from '../util/colors';
+
 const Container = ({ children }) => {
   return <View style={styles.container}>{children}</View>;
 };
@@ -10,7 +12,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     borderRadius: 8,
     padding: 16,
-    backgroundColor: '#3b021f',
+    backgroundColor: Colors.primary800,
     // for shadow on Android
     elevation: 4,
     // for shadow on iOS
