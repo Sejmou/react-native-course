@@ -38,6 +38,7 @@ const StartGameScreen = ({ onPickNumber }) => {
         autoCorrect={false}
         value={enteredNumber}
         onChangeText={numberInputHandler}
+        onSubmitEditing={confirmInputHandler}
       />
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
