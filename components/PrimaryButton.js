@@ -1,6 +1,7 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
 import Colors from '../util/colors';
+import Typography from '../util/typography';
 
 // TODO: make this behave like an actual button
 const PrimaryButton = ({ children, onPress, style }) => {
@@ -17,7 +18,7 @@ const PrimaryButton = ({ children, onPress, style }) => {
         onPress={onPress}
         android_ripple={{ color: Colors.primary600 }}
       >
-        <Text style={styles.text}>{children}</Text>
+        <Text style={[Typography.regularText, styles.text]}>{children}</Text>
       </Pressable>
     </View>
   );
@@ -39,7 +40,6 @@ const styles = StyleSheet.create({
     elevation: 2, // Android only
   },
   text: {
-    color: 'white',
     textAlign: 'center',
   },
   pressed: {
