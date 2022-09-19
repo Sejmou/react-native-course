@@ -1,13 +1,13 @@
 import { Text, StyleSheet } from 'react-native';
-import Container from './Container';
+import Card from './Card';
 
 import Colors from '../util/colors';
 
 const Title = ({ text }) => {
   return (
-    <Container>
+    <Card>
       <Text style={styles.text}>{text}</Text>
-    </Container>
+    </Card>
   );
 };
 export default Title;

@@ -7,7 +7,7 @@ import {
   Alert,
   Text,
 } from 'react-native';
-import Container from '../components/Container';
+import Card from '../components/Card';
 import PrimaryButton from '../components/PrimaryButton';
 import TextContainer from '../components/TextContainer';
 import Title from '../components/Title';
@@ -48,7 +48,7 @@ const StartGameScreen = ({ onPickNumber }) => {
         text="Let an imaginary friend guess a number between 1 and 99 🙃"
         style={UtilStyles.nextColumnSibling}
       />
-      <Container style={UtilStyles.nextColumnSibling}>
+      <Card style={UtilStyles.nextColumnSibling}>
         <Text style={Typography.regularText}>Enter your pick:</Text>
         <TextInput
           style={styles.numberInput}
@@ -69,27 +69,13 @@ const StartGameScreen = ({ onPickNumber }) => {
             <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
           </View>
         </View>
-      </Container>
+      </Card>
     </>
   );
 };
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 24,
-    borderRadius: 8,
-    padding: 16,
-    backgroundColor: Colors.primary800,
-    // for shadow on Android
-    elevation: 4,
-    // for shadow on iOS
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
-    alignItems: 'center',
-  },
   buttonsContainer: {
     flexDirection: 'row',
   },

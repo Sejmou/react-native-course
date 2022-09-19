@@ -1,14 +1,14 @@
 import { Text, StyleSheet } from 'react-native';
 
-import Container from './Container';
+import Card from './Card';
 
 const TextContainer = ({ text, style }) => {
   const propStyles = !Array.isArray(style) ? [style || {}] : style;
 
   return (
-    <Container style={propStyles}>
+    <Card style={propStyles}>
       <Text style={styles.text}>{text}</Text>
-    </Container>
+    </Card>
   );
 };
 

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
 
 import Title from '../components/Title';
-import Container from '../components/Container';
+import Card from '../components/Card';
 import PrimaryButton from '../components/PrimaryButton';
 import Colors from '../util/colors';
 import utilStyles from '../util/styles';
@@ -67,10 +67,10 @@ const GameScreen = ({ userNumber, onGameOver }) => {
   return (
     <>
       <Title text="Your imaginary friend's guess:" />
-      <Container style={utilStyles.nextColumnSibling}>
+      <Card style={utilStyles.nextColumnSibling}>
         <Text style={styles.guess}>{currentGuess}</Text>
-      </Container>
-      <Container style={utilStyles.nextColumnSibling}>
+      </Card>
+      <Card style={utilStyles.nextColumnSibling}>
         <View style={styles.inputContainer}>
           <PrimaryButton onPress={() => nextGuessHandler('higher')}>
             Higher
@@ -79,7 +79,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
             Lower
           </PrimaryButton>
         </View>
-      </Container>
+      </Card>
     </>
   );
 };

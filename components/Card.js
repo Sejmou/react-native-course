@@ -2,15 +2,15 @@ import { View, StyleSheet } from 'react-native';
 
 import Colors from '../util/colors';
 
-const Container = ({ children, style }) => {
+const Card = ({ children, style }) => {
   const propStyles = !Array.isArray(style) ? [style || {}] : style;
 
-  return <View style={[styles.container, ...propStyles]}>{children}</View>;
+  return <View style={[styles.card, ...propStyles]}>{children}</View>;
 };
-export default Container;
+export default Card;
 
 const styles = StyleSheet.create({
-  container: {
+  card: {
     marginHorizontal: 24,
     borderRadius: 8,
     padding: 16,
