@@ -1,22 +1,22 @@
 import { Text, StyleSheet } from 'react-native';
+
 import Container from './Container';
 
-import Colors from '../util/colors';
+const TextContainer = ({ text, style }) => {
+  const propStyles = !Array.isArray(style) ? [style || {}] : style;
 
-const Title = ({ text }) => {
   return (
-    <Container>
+    <Container style={propStyles}>
       <Text style={styles.text}>{text}</Text>
     </Container>
   );
 };
-export default Title;
+
+export default TextContainer;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 32,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    color: Colors.accent500,
+    color: 'white',
+    fontSize: 16,
   },
 });

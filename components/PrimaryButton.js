@@ -3,9 +3,11 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 import Colors from '../util/colors';
 
 // TODO: make this behave like an actual button
-const PrimaryButton = ({ children, onPress }) => {
+const PrimaryButton = ({ children, onPress, style }) => {
+  const propStyles = !Array.isArray(style) ? [style || {}] : style;
+
   return (
-    <View style={styles.outerContainer}>
+    <View style={[styles.outerContainer, ...propStyles]}>
       <Pressable
         style={({ pressed }) =>
           Platform.OS === 'ios' && pressed

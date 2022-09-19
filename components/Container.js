@@ -2,8 +2,10 @@ import { View, StyleSheet } from 'react-native';
 
 import Colors from '../util/colors';
 
-const Container = ({ children }) => {
-  return <View style={styles.container}>{children}</View>;
+const Container = ({ children, style }) => {
+  const propStyles = !Array.isArray(style) ? [style || {}] : style;
+
+  return <View style={[styles.container, ...propStyles]}>{children}</View>;
 };
 export default Container;
 

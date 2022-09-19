@@ -14,15 +14,22 @@ import Colors from './util/colors';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
+  const [gameRunning, setGameRunning] = useState(false);
 
   const pickNumberHandler = pickedNumber => {
     setUserNumber(pickedNumber);
+    setGameRunning(true);
   };
 
-  const screen = !userNumber ? (
-    <StartGameScreen onPickNumber={pickNumberHandler} />
+  const gameOverHandler = () => {
+    setUserNumber(null);
+    setGameRunning(false);
+  };
+
+  const screen = gameRunning ? (
+    <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
   ) : (
-    <GameScreen />
+    <StartGameScreen onPickNumber={pickNumberHandler} />
   );
 
   return (
